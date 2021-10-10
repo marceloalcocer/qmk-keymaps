@@ -16,6 +16,23 @@
 #include QMK_KEYBOARD_H
 #include "keymap_uk.h"
 
+#define LAYOUT_malcocer( \
+    L00, L01, L02, L03, L04, L05,                     R06, R07, R08, R09, R10, R11, \
+    L12, L13, L14, L15, L16, L17,                     R18, R19, R20, R21, R22, R23, \
+    L24, L25, L26, L27, L28, L29,                     R34, R35, R36, R37, R38, R39, \
+                   L40, L41, L42, L43, L44, R45, R46, R47, R48, R49 \
+) \
+{ \
+    { KC_NO, KC_NO, L05,   L04,   L03,   L02,   L01,   L00   }, \
+    { KC_NO, KC_NO, L17,   L16,   L15,   L14,   L13,   L12   }, \
+    { KC_NO, KC_NO, L29,   L28,   L27,   L26,   L25,   L24   }, \
+    { L44,   L43,   L42,   L41,   L40,   KC_NO, KC_NO, KC_NO }, \
+    { KC_NO, KC_NO, R06,   R07,   R08,   R09,   R10,   R11   }, \
+    { KC_NO, KC_NO, R18,   R19,   R20,   R21,   R22,   R23   }, \
+    { KC_NO, KC_NO, R34,   R35,   R36,   R37,   R38,   R39   }, \
+    { R45,   R46,   R47,   R48,   R49,   KC_NO, KC_NO, KC_NO }, \
+}
+
 enum layers {
     ALPHA = 0,
     SYMBOL,
@@ -39,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        ╰──────┴──────┴──────┴──────┴──────╯                     ╰──────┴──────┴──────┴──────┴──────╯
  *
  */
-    [ALPHA] = LAYOUT_split_3x6_5(
+    [ALPHA] = LAYOUT_malcocer(
       UK_GRV,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    UK_MINS,
       UK_BSLS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                             KC_H,    KC_J,    KC_K,    KC_L,    UK_SCLN, UK_HASH,
       KC_LGUI,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                                             KC_N,    KC_M,    UK_COMM, UK_DOT,  UK_SLSH, UK_QUOT,
@@ -59,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │      │      │      │      │      │                     │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯                     ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [SYMBOL] = LAYOUT_split_3x6_5(
+    [SYMBOL] = LAYOUT_malcocer(
       _______, UK_EXLM, UK_DQUO, UK_LCBR, UK_RCBR, UK_PIPE,                                     _______, UK_AMPR, UK_BSLS, UK_EURO,  UK_PND, _______,
       _______, UK_CIRC, UK_DLR,  UK_LPRN, UK_RPRN, UK_GRV,                                      UK_MINS, UK_PLUS, UK_SLSH, UK_ASTR, UK_PERC, _______,
       _______, _______, _______, UK_LBRC, UK_RBRC, UK_TILD,                                     _______, _______, _______, _______, _______, _______,
@@ -79,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │      │      │      │      │      │                     │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯                     ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [NUMERIC] = LAYOUT_split_3x6_5(
+    [NUMERIC] = LAYOUT_malcocer(
       RCS(KC_U), KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
       KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
@@ -99,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │Alt+F4│      │      │      │      │                     │      │      │      │      │Shtdwn│
  *                        ╰──────┴──────┴──────┴──────┴──────╯                     ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [MEDIA] = LAYOUT_split_3x6_5(
+    [MEDIA] = LAYOUT_malcocer(
       _______, KC_F20,  KC_MUTE, KC_VOLD, KC_VOLU, _______,                                     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_BTN1, KC_MS_BTN2,
       _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
       RESET,   _______, _______, KC_BRID, KC_BRIU, _______,                                     _______, _______, _______, _______, _______, _______,
