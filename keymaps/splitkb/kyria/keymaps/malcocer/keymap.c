@@ -219,7 +219,7 @@ void oled_task_user(void) {
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        // Volume control
+        // Mouse wheel
         if (clockwise) {
             tap_code(KC_WH_D);
         } else {
