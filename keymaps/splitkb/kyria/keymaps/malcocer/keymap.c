@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Media layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                                                 ╭──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │      │      │ Mute │MicMut│      │                                                 │ MLeft│ Mdown│ MUp  │MRight│MBtn1 │ MBtn2  │
+ * │        │      │ App  │ Mute │MicMut│      │                                                 │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤                                                 ├──────┼──────┼──────┼──────┼──────┼────────┤
  * │        │      │ Prev │ Play │ Next │      │                                                 │      │      │      │      │      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┬──────╮                     ╭──────┬──────┼──────┼──────┼──────┼──────┼──────┼────────┤
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        ╰──────┴──────┴──────┴──────┴──────╯                     ╰──────┴──────┴──────┴──────┴──────╯
  */
     [MEDIA] = LAYOUT_malcocer(
-      _______, _______, _______, KC_MUTE, KC_F20,  _______,                                     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_BTN1, KC_MS_BTN2,
+      _______, _______, KC_APP,  KC_MUTE, KC_F20,  _______,                                     _______, _______, _______, _______, _______, _______,
       _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                     _______, _______, _______, _______, _______, _______,
       RESET,   _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
                              LALT(KC_F4), _______, _______, _______, _______, _______, _______, _______, _______, LCA(KC_END)
@@ -235,8 +235,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
             case ALPHA:
             default:
                 // Mouse wheel
-                if (clockwise) tap_code(KC_WH_D);
-                else tap_code(KC_WH_U);
+                //if (clockwise) tap_code(KC_WH_D);
+                //else tap_code(KC_WH_U);
                 break;
         }
 
