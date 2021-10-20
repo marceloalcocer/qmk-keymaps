@@ -214,7 +214,7 @@ void oled_task_user(void) {
         render_kyria_logo();
     }
 }
-#endif
+#endif //OLED_ENABLE
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
@@ -265,4 +265,4 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 
 }
-#endif
+#endif //ENCODER_ENABLE
