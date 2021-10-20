@@ -30,6 +30,8 @@
 // Tweak encoder settings
 #define ENCODER_DIRECTION_FLIP
 #define ENCODER_DIRECTION_FLIP_RIGHT
+#define ENCODER_RESOLUTION 2
+#define ENCODER_RESOLUTION_RIGHT 2
 
 // Tweak tapping term
 #define TAPPING_TERM 150
