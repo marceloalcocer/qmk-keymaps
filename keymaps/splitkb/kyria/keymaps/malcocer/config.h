@@ -16,26 +16,30 @@
 
 #pragma once
 
+
+
+/* OLED display ***************************************************************/
 #ifdef OLED_ENABLE
   #define OLED_TIMEOUT 1000
   #define OLED_BRIGHTNESS 128
   #define OLED_DISPLAY_128X64
 #endif
 
-// Set handedness by EEPROM
-// N.b. Flash EEPROM using dfu-split-{left,right} target. Try not to do this too much though
-// https://docs.qmk.fm/#/config_options?id=setting-handedness
-#define EE_HANDS
 
-// Tweak encoder settings
+
+/* Handedness *****************************************************************/
+#define EE_HANDS            // Set handedness by EEPROM
+
+
+
+/* Encoders *******************************************************************/
 #define ENCODER_DIRECTION_FLIP
 #define ENCODER_DIRECTION_FLIP_RIGHT
 #define ENCODER_RESOLUTION 2
 #define ENCODER_RESOLUTION_RIGHT 2
 
-// Tweak tapping term
-#define TAPPING_TERM 125
 
-// If you are using an Elite C rev3 on the slave side, uncomment the lines below:
-//#define SPLIT_USB_DETECT
-//#define NO_USB_STARTUP_CHECK
+
+/* Misc ***********************************************************************/
+#define TAPPING_TERM 125    // Tweak tapping term
+

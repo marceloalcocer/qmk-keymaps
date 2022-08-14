@@ -16,6 +16,9 @@
 #include QMK_KEYBOARD_H
 #include "keymap_uk.h"
 
+
+
+/* Keymap *********************************************************************/
 #define LAYOUT_malcocer( \
     L00, L01, L02, L03, L04, L05,                     R06, R07, R08, R09, R10, R11, \
     L12, L13, L14, L15, L16, L17,                     R18, R19, R20, R21, R22, R23, \
@@ -148,6 +151,9 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	return update_tri_layer_state(state, SYMBOL, NUMERIC, MEDIA);
 }
 
+
+
+/* OLED display ***************************************************************/
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 	return OLED_ROTATION_180;
@@ -217,6 +223,9 @@ bool oled_task_user(void) {
 }
 #endif //OLED_ENABLE
 
+
+
+/* Encoders *******************************************************************/
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
 
