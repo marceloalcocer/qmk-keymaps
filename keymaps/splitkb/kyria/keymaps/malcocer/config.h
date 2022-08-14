@@ -20,9 +20,9 @@
 
 /* OLED display ***************************************************************/
 #ifdef OLED_ENABLE
-  #define OLED_TIMEOUT 1000
-  #define OLED_BRIGHTNESS 128
-  #define OLED_DISPLAY_128X64
+    #define OLED_TIMEOUT 1000
+    #define OLED_BRIGHTNESS 128
+    #define OLED_DISPLAY_128X64
 #endif
 
 
