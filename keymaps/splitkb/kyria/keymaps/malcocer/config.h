@@ -40,6 +40,16 @@
 
 
 
+/* Trackball ******************************************************************/
+#ifdef POINTING_DEVICE_ENABLE
+    #define SPLIT_POINTING_ENABLE
+    #define POINTING_DEVICE_RIGHT
+    #define PIMORONI_TRACKBALL_ADDRESS 0x0A
+    #define PIMORONI_TRACKBALL_SCALE 5
+#endif
+
+
+
 /* Misc ***********************************************************************/
 #define TAPPING_TERM 125    // Tweak tapping term
 
