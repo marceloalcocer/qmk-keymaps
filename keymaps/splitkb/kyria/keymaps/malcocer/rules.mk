@@ -1,5 +1,10 @@
-OLED_ENABLE = yes          # Enables the use of OLED displays
-OLED_DRIVER = SSD1306      # Specify OLED driver
-ENCODER_ENABLE = yes       # Enables the use of one or more encoders
-RGBLIGHT_ENABLE = no       # Disable keyboard RGB underglow
-MOUSEKEY_ENABLE = no       # Disable mouse keys
+# OLED display #################################################################
+OLED_ENABLE = yes               # Enable OLED displays
+OLED_DRIVER = SSD1306           # Specify OLED driver
+
+# Encoders #####################################################################
+ENCODER_ENABLE = yes            # Enable encoders
+
+# Misc #########################################################################
+RGBLIGHT_ENABLE = no            # Disable RGB underglow
+MOUSEKEY_ENABLE = no            # Disable mouse keys
