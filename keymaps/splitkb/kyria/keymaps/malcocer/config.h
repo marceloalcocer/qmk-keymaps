@@ -34,7 +34,7 @@
 #define ENCODER_RESOLUTION_RIGHT 2
 
 // Tweak tapping term
-#define TAPPING_TERM 150
+#define TAPPING_TERM 125
 
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
 //#define SPLIT_USB_DETECT

@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [ALPHA] = LAYOUT_malcocer(
       UK_GRV,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    UK_MINS,
       UK_BSLS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                             KC_H,    KC_J,    KC_K,    KC_L,    UK_SCLN, UK_HASH,
-      KC_LGUI,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                                             KC_N,    KC_M,    UK_COMM, UK_DOT,  UK_SLSH, UK_QUOT,
+      KC_LGUI,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                                             KC_N,    KC_M,    UK_COMM, UK_DOT,  UK_SLSH, RGUI_T(UK_QUOT),
            XXXXXXX, LCTL_T(KC_CAPS), LSFT_T(KC_BSPC), LT(NUMERIC, KC_TAB), LT(SYMBOL, KC_ESC),     LT(SYMBOL, KC_ENT), LT(NUMERIC, KC_SPC), RSFT_T(KC_BSPC), LALT_T(KC_DEL), XXXXXXX
     ),
 /*
@@ -207,12 +207,13 @@ static void render_status(void) {
     oled_write_P(IS_LED_ON(led_usb_state, USB_LED_SCROLL_LOCK) ? PSTR("SCRLCK ") : PSTR("       "), false);
 }
 
-void oled_task_user(void) {
+bool oled_task_user(void) {
     if (is_keyboard_master()) {
         render_status(); // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
         render_kyria_logo();
     }
+    return false;
 }
 #endif //OLED_ENABLE
 
@@ -224,19 +225,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         switch (biton32(layer_state)) {
             case NUMERIC:
                 // Left/Right
-                if (clockwise) tap_code(KC_RIGHT);
-                else tap_code(KC_LEFT);
+                if (clockwise) { tap_code(KC_RIGHT); }
+                else { tap_code(KC_LEFT); }
                 break;
             case SYMBOL:
                 // Brightness
-                if (clockwise) tap_code(KC_BRIU);
-                else tap_code(KC_BRID);
+                if (clockwise) { tap_code(KC_BRIU); }
+                else { tap_code(KC_BRID); }
                 break;
             case ALPHA:
             default:
-                // Mouse wheel
-                //if (clockwise) tap_code(KC_WH_D);
-                //else tap_code(KC_WH_U);
+                // Tab
+                if (clockwise) { tap_code(KC_TAB); }
+                else { tap_code16(LSFT(KC_TAB)); }
                 break;
         }
 
@@ -245,19 +246,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         switch (biton32(layer_state)) {
             case NUMERIC:
                 // Up/down
-                if (clockwise) tap_code(KC_DOWN);
-                else tap_code(KC_UP);
+                if (clockwise) { tap_code(KC_DOWN); }
+                else { tap_code(KC_UP); }
                 break;
             case SYMBOL:
                 // Volume
-                if (clockwise) tap_code(KC_VOLU);
-                else tap_code(KC_VOLD);
+                if (clockwise) { tap_code(KC_VOLU); }
+                else { tap_code(KC_VOLD); }
                 break;
             case ALPHA:
             default:
                 // Page up/Page down
-                if (clockwise) tap_code(KC_PGDN);
-                else tap_code(KC_PGUP);
+                if (clockwise) { tap_code(KC_PGDN); }
+                else { tap_code(KC_PGUP); }
                 break;
         }
 
