@@ -263,6 +263,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 /* Trackball ******************************************************************/
 #ifdef POINTING_DEVICE_ENABLE
+void pointing_device_init_user(void) {
+    pimoroni_trackball_set_rgbw(0x00, 0x00, 0x00, 0x40);
+}
+
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     switch (biton32(layer_state)) {
         case NUMERIC:
