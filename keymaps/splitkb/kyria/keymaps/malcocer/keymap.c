@@ -258,3 +258,27 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 }
 #endif //ENCODER_ENABLE
+
+
+
+/* Trackball ******************************************************************/
+#ifdef POINTING_DEVICE_ENABLE
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    switch (biton32(layer_state)) {
+        case NUMERIC:
+            // Slower
+            mouse_report.x = mouse_report.x / 2;
+            mouse_report.y = mouse_report.y / 2;
+            break;
+        case SYMBOL:
+            // Faster
+            mouse_report.x = mouse_report.x * 2;
+            mouse_report.y = mouse_report.y * 2;
+            break;
+        case ALPHA:
+        default:
+            break;
+    }
+    return mouse_report;
+}
+#endif //POINTING_DEVICE_ENABLE
