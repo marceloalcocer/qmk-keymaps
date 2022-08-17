@@ -281,4 +281,10 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     }
     return mouse_report;
 }
+
+bool led_update_user(led_t led_state){
+      if (led_state.caps_lock) pimoroni_trackball_set_rgbw(0x40, 0x00, 0x00, 0x00);
+      else pimoroni_trackball_set_rgbw(0x00, 0x00, 0x00, 0x40);
+      return false;
+}
 #endif //POINTING_DEVICE_ENABLE
