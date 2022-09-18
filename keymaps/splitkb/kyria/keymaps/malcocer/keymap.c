@@ -281,8 +281,8 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             break;
         case SYMBOL:
             // Faster
-            mouse_report.x = mouse_report.x * 2;
-            mouse_report.y = mouse_report.y * 2;
+            mouse_report.x = mouse_report.x * 4;
+            mouse_report.y = mouse_report.y * 4;
             break;
         case ALPHA:
         default:
