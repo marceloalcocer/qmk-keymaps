@@ -211,11 +211,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch (biton32(layer_state)) {
             case NUMERIC:
+                // Mouse wheel
+                if (clockwise) { tap_code(KC_WH_R); }
+                else { tap_code(KC_WH_L); }
+            case SYMBOL:
                 // Left/Right
                 if (clockwise) { tap_code(KC_RIGHT); }
                 else { tap_code(KC_LEFT); }
                 break;
-            case SYMBOL:
+            case MEDIA:
                 // Brightness
                 if (clockwise) { tap_code(KC_BRIU); }
                 else { tap_code(KC_BRID); }
@@ -232,11 +236,16 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) {
         switch (biton32(layer_state)) {
             case NUMERIC:
+                // Mouse wheel
+                if (clockwise) { tap_code(KC_WH_D); }
+                else { tap_code(KC_WH_U); }
+                break;
+            case SYMBOL:
                 // Up/down
                 if (clockwise) { tap_code(KC_DOWN); }
                 else { tap_code(KC_UP); }
                 break;
-            case SYMBOL:
+            case MEDIA:
                 // Volume
                 if (clockwise) { tap_code(KC_VOLU); }
                 else { tap_code(KC_VOLD); }
