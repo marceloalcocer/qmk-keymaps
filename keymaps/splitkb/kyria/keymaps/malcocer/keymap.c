@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MEDIA] = LAYOUT_malcocer(
       _______, _______, _______, KC_MUTE, KC_F20,  _______,                                 KC_HOME, KC_KP_7, KC_KP_8, KC_KP_9, _______, _______,
       _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                 KC_END,  KC_KP_4, KC_KP_5, KC_KP_6, _______, _______,
-      RESET,   _______, _______, _______, _______, _______,                                 KC_APP,  KC_KP_1, KC_KP_2, KC_KP_3, _______, _______,
+      QK_BOOT, _______, _______, _______, _______, _______,                                 KC_APP,  KC_KP_1, KC_KP_2, KC_KP_3, _______, _______,
                              _______, _______, _______, _______, _______, _______, _______, KC_KP_0, KC_PDOT, _______
     ),
 // /*
