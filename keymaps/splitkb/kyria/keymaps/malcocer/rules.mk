@@ -1,6 +1,7 @@
 # OLED display #################################################################
 OLED_ENABLE = yes                               # Enable OLED displays
-OLED_DRIVER = SSD1306                           # Specify OLED driver
+OLED_DRIVER = ssd1306                           # Specify OLED driver
+OLED_TRANSPORT = i2c                            # Specify OLED transport
 
 # Encoders #####################################################################
 ENCODER_ENABLE = yes                            # Enable encoders
