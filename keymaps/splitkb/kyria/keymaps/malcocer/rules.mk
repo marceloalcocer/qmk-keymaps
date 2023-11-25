@@ -5,6 +5,7 @@ OLED_TRANSPORT = i2c                            # Specify OLED transport
 
 # Encoders #####################################################################
 ENCODER_ENABLE = yes                            # Enable encoders
+ENCODER_MAP_ENABLE = yes                        # Enable encoder layers
 
 # Trackball ####################################################################
 POINTING_DEVICE_ENABLE = yes                    # Enable pointing device

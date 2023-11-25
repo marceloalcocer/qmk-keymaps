@@ -204,65 +204,54 @@ bool oled_task_user(void) {
 
 
 /* Encoders *******************************************************************/
-#ifdef ENCODER_ENABLE
-bool encoder_update_user(uint8_t index, bool clockwise) {
+#ifdef ENCODER_MAP_ENABLE
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 
-    // Left encoder
-    if (index == 0) {
-        switch (biton32(layer_state)) {
-            case NUMERIC:
-                // Mouse wheel
-                if (clockwise) { tap_code(KC_WH_R); }
-                else { tap_code(KC_WH_L); }
-            case SYMBOL:
-                // Left/Right
-                if (clockwise) { tap_code(KC_RIGHT); }
-                else { tap_code(KC_LEFT); }
-                break;
-            case MEDIA:
-                // Brightness
-                if (clockwise) { tap_code(KC_BRIU); }
-                else { tap_code(KC_BRID); }
-                break;
-            case ALPHA:
-            default:
-                // Tab
-                if (clockwise) { tap_code(KC_TAB); }
-                else { tap_code16(LSFT(KC_TAB)); }
-                break;
-        }
+/*
+ * Alpha layer
+ *                      ╭───────┬───────╮                              ╭──────┬───────╮
+ *                      │  ↺    │   ↻   │                              │  ↺   │   ↻   │
+ *                      │ShftTab│  Tab  │                        Page  │  Up  │  Down │
+ *                      ╰───────┴───────╯                              ╰──────┴───────╯
+ */
+    [ALPHA] =   {
+        ENCODER_CCW_CW( LSFT(KC_TAB) , KC_TAB ),      ENCODER_CCW_CW( KC_PGUP , KC_PGDN )
+    },
 
-    // Right encoder
-    } else if (index == 1) {
-        switch (biton32(layer_state)) {
-            case NUMERIC:
-                // Mouse wheel
-                if (clockwise) { tap_code(KC_WH_D); }
-                else { tap_code(KC_WH_U); }
-                break;
-            case SYMBOL:
-                // Up/down
-                if (clockwise) { tap_code(KC_DOWN); }
-                else { tap_code(KC_UP); }
-                break;
-            case MEDIA:
-                // Volume
-                if (clockwise) { tap_code(KC_VOLU); }
-                else { tap_code(KC_VOLD); }
-                break;
-            case ALPHA:
-            default:
-                // Page up/Page down
-                if (clockwise) { tap_code(KC_PGDN); }
-                else { tap_code(KC_PGUP); }
-                break;
-        }
+/*
+ * Symbol layer
+ *                      ╭───────┬───────╮                              ╭──────┬───────╮
+ *                      │  ↺    │   ↻   │                              │  ↺   │   ↻   │
+ *               Arrow  │ Left  │ Right │                       Arrow  │  Up  │  Down │
+ *                      ╰───────┴───────╯                              ╰──────┴───────╯
+ */
+    [SYMBOL] =  {
+        ENCODER_CCW_CW( KC_LEFT , KC_RIGHT ),         ENCODER_CCW_CW( KC_UP   , KC_DOWN ),
+    },
 
-    }
-    return false;
+/*
+ * Numeric layer
+ *                      ╭───────┬───────╮                              ╭──────┬───────╮
+ *                      │  ↺    │   ↻   │                              │  ↺   │   ↻   │
+ *               Wheel  │ Left  │ Right │                       Wheel  │  Up  │  Down │
+ *                      ╰───────┴───────╯                              ╰──────┴───────╯
+ */
+    [NUMERIC] = {
+        ENCODER_CCW_CW( KC_WH_L , KC_WH_R ),          ENCODER_CCW_CW( KC_WH_U , KC_WH_D ),
+    },
 
-}
-#endif //ENCODER_ENABLE
+/*
+ * Media layer
+ *                      ╭───────┬───────╮                              ╭──────┬───────╮
+ *                      │  ↺    │   ↻   │                              │  ↺   │   ↻   │
+ *          Brightness  │  Up   │  Down │                      Volume  │  Up  │  Down │
+ *                      ╰───────┴───────╯                              ╰──────┴───────╯
+ */
+    [MEDIA] =   {
+        ENCODER_CCW_CW( KC_BRID , KC_BRIU ),          ENCODER_CCW_CW( KC_VOLD , KC_VOLU ),
+    },
+};
+#endif //ENCODER_MAP_ENABLE
 
 
 
