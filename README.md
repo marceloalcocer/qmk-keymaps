@@ -8,9 +8,9 @@ Personal [QMK][qmk] keymaps
 
 The main QMK repository is located in the `qmk_firmware` directory as a submodule.
 
-All personal keymaps are located in the `keymaps` directory, and follow the [QMK keyboard directory structure][qmk_dirs], e.g.;
+All personal keymaps are located in the `keymaps` directory, and follow the [QMK keyboard directory structure][qmk-dirs], e.g.;
 
-```
+```shell
 ~/qmk-keymaps$ ls -R keymaps
 keymaps:
 splitkb
